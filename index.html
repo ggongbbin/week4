@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		.hyuk{position: absolute; left: 0; top: 0;}
+		#poetText{ z-index: 9; 
+		           position: absolute; left: 300px; top:100px; 
+		           font-size: 4rem;
+		           font-weight:900; 
+		           text-shadow: 0px 0px 5px violet;
+		           }
+
+
+		           .word{opacity: 0; animation: fadein 1s forwards;}
+		           @keyframes fadein{
+		           	 to {opacity: 1}
+		           }
+
+	</style>
+</head>
+<body>
+	<div id = "poetText"></div>
+   <script type="text/javascript">
+
+     var a = ["hyuk", "bae", "coolj"];
+
+
+
+    for(var i=0; i<100; i++){
+    	var t = document.createElement("img");
+   	    t.src = a[randomBH(0,2)] + ".png";
+   	    t.className = "hyuk";
+   	    t.style.width = randomBH(50,200) + "px";
+   	    t.style.height = "auto";
+   	    t.style.left = Math.random()*screen.availWidth + "px";
+   	    t.style.top = Math.random()*screen.availHeight + "px";
+   	    document.body.appendChild(t);
+
+    }
+
+
+   	var poet = "그래,<br>\r 나 지금 정신 못 차리고<br>\r 술 마신다<br>\r ...근데 어쩌냐<br>\r 이래야 개강이 잊혀지는데<br>\r <br>\r [그놈은 개강했다 中]<br>\r";
+   	var poetArr = poet.split("\r");
+
+   	var myTimer = setInterval(print,500);
+   	var s=0;
+   	function print(){
+   		var t = document.createElement("span");
+   		t.innerHTML = poetArr[s] + " ";
+   		t.className = "word";
+   		s++;
+   		poetText.appendChild(t);
+
+   		if(s == poetArr.length){
+   			clearInterval(myTimer);
+   		}
+
+   	}
+
+
+   	    function randomBH(min, max){
+   	    	min = Math.ceil(min);
+   		    max = Math.floor(max);
+   		    return Math.floor(Math.random() * (max - min + 1)) + min;
+         	}
+   	
+   </script>
+
+</body>
+</html>
